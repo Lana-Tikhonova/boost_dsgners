@@ -8,17 +8,16 @@ $(document).ready(function () {
 
     $('.menu a').on('click', function (e) {
         e.preventDefault();
-		let href = $(this).attr("href");
-		$('.mobile_menu').removeClass('open')
-		$('body').removeClass('locked')
-		$('.menu_btn').removeClass('active')
+        let href = $(this).attr("href");
+        $('.mobile_menu').removeClass('open')
+        $('body').removeClass('locked')
+        $('.menu_btn').removeClass('active')
 
         $("html, body").animate({
             scrollTop: $(href).offset().top - 45
         }, 1000);
-		
-	});
 
+    });
 
     const whatSlider = new Swiper('.what_is_slider .swiper', {
         slidesPerView: 'auto',
@@ -105,6 +104,39 @@ $(document).ready(function () {
                 slidesPerView: 6,
                 spaceBetween: 24,
             },
+        }
+    });
+
+    // modals
+    const body = document.querySelector('body');
+    let getScrollWidth = () => window.innerWidth - document.documentElement.offsetWidth;
+    let browserScrollWidth = getScrollWidth();
+
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (target.closest('[data-open-modal]')) {
+            e.preventDefault();
+            const targetId = target.closest('[data-open-modal]').dataset.openModal;
+            const selectedModal = document.querySelector(`[data-modal="${targetId}"]`);
+            selectedModal.classList.add('show');
+            body.classList.add('locked_modal');
+            if (getScrollWidth() == 0) {
+                body.style.paddingRight = `${browserScrollWidth}px`;
+            }
+        }
+        if (target.closest('[data-modal-close]')) {
+            e.preventDefault();
+            let modalOpen = document.querySelector('.modal.show');
+            document.querySelector('.modal.show').classList.remove('show');
+            body.classList.remove('locked_modal');
+            body.style.paddingRight = ``;
+        }
+        if (target.closest('.modal') && !target.closest('.modal-content')) {
+            e.preventDefault();
+            let modalOpen = document.querySelector('.modal.show');
+            document.querySelector('.modal.show').classList.remove('show');
+            body.classList.remove('locked_modal');
+            body.style.paddingRight = ``;
         }
     });
 
