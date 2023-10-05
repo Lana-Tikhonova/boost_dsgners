@@ -30,18 +30,18 @@ $(document).ready(function () {
 
     const scheduleItem = $('.schedule_item');
     scheduleItem.filter(':first').toggleClass('active');
-    scheduleItem.filter(':first').find('.schedule_block').slideToggle();
+    scheduleItem.filter(':first').find('.schedule_block_item').slideToggle();
     scheduleItem.filter(':first').next().toggleClass('active_prev');
 
 
     $('.schedule_item_open').on('click', function () {
         let scheduleItemParent = $('.schedule_item_open').not(this).parent();
         scheduleItemParent.removeClass('active');
-        scheduleItemParent.find('.schedule_block').slideUp();
+        scheduleItemParent.find('.schedule_block_item').slideUp();
         scheduleItemParent.next().removeClass('active_prev');
 
         $(this).parent().toggleClass('active');
-        $(this).parent().find('.schedule_block').slideToggle();
+        $(this).parent().find('.schedule_block_item').slideToggle();
         $(this).parent().next().toggleClass('active_prev');
     });
 

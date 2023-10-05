@@ -2687,6 +2687,14 @@ img {
 	margin-bottom: 24px;
 }
 
+.schedule_block_item {
+	display: none;
+
+	.text {
+		padding-top: 25px;
+	}
+}
+
 .schedule_peoples {
 	margin-top: 65px;
 	display: flex;
@@ -2785,11 +2793,6 @@ img {
 	right: 18px;
 }
 
-.schedule_block {
-	padding-top: 25px;
-	display: none;
-}
-
 @media screen and (max-width:1350px) {
 	.schedule_title_text {
 		font-size: 16px;
@@ -2878,7 +2881,7 @@ img {
 		}
 	}
 
-	.schedule_block {
+	.schedule_block_item .text {
 		padding-top: 18px;
 	}
 
@@ -2901,6 +2904,13 @@ img {
 	.schedule_item {
 		flex-direction: column;
 		padding: 20px 16px;
+		position: relative;
+
+		&.active {
+			.schedule_item_left .schedule_item_img {
+				display: none;
+			}
+		}
 	}
 
 	.schedule_item_left {
@@ -2910,6 +2920,13 @@ img {
 		.schedule_item_img {
 			display: none;
 		}
+	}
+
+	.schedule_item_img_mobile {
+		position: absolute;
+		bottom: 0;
+		left: 16px;
+		z-index: 1;
 	}
 
 	.schedule_breadcrumbs {
@@ -3962,7 +3979,6 @@ img {
 .faq_item {
 	border-radius: 30px;
 	border: 1px solid #000;
-	padding: 40px 24px;
 	transition: $transition;
 
 	&.active {
@@ -3984,9 +4000,10 @@ img {
 }
 
 .faq_item_btn {
+	padding: 40px 24px;
+	cursor: pointer;
 	background: transparent;
 	border: none;
-	padding: 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -3994,11 +4011,12 @@ img {
 	font-size: 36px;
 	font-weight: 600;
 	letter-spacing: -1.44px;
+	line-height: 120%;
 	width: 100%;
 	transition: $transition;
 
 	span {
-		max-width: 850px;
+		max-width: 870px;
 		text-align: left;
 		padding-right: 20px;
 	}
@@ -4011,7 +4029,8 @@ img {
 	line-height: 120%;
 	font-weight: 400;
 	letter-spacing: -0.88px;
-	padding-top: 20px;
+	padding: 0 24px 40px;
+	margin-top: -20px;
 }
 
 @media screen and (max-width:992px) {
@@ -4040,17 +4059,18 @@ img {
 	}
 
 	.faq_item {
-		padding: 20px;
 		border-radius: 20px;
 	}
 
 	.faq_item_content {
-		padding-top: 10px;
+		padding: 0 20px 20px;
+		margin-top: -10px;
 	}
 
 	.faq_item_btn {
 		font-size: 24px;
 		letter-spacing: -0.96px;
+		padding: 20px;
 
 		span {
 			padding-right: 10px;
