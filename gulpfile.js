@@ -15,7 +15,7 @@ const config = {
 		//base: 'assets',
 		entry: {
 			js: [
-				'templates/src/vendors/jquery/jquery-3.5.1.min.js',
+				// 'templates/src/vendors/jquery/jquery-3.5.1.min.js',
 				'templates/src/vendors/swiper/swiper-bundle.min.js',
 				'templates/src/vendors/Magnific-Popup/jquery.magnific-popup.min.js',
 				'templates/src/js/common.js'

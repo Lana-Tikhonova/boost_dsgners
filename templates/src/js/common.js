@@ -140,4 +140,13 @@ $(document).ready(function () {
         }
     });
 
+    $('.price_time_countdown').countdown({
+        until: new Date(2023, 9, 8),
+        format: 'DHMS'
+    });
+
+    $('.price_time_close').on('click', function () {
+        $('.price_time_wrapper').hide();
+    });
+
 });
